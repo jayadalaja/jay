@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jay's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff; /* Light blue background */
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #ffe0b3; /* Light peach background */
+            padding: 10px 20px;
+            margin-top: 0;
+            border-radius: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo */
+        .logo {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Menu List */
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            color: white; /* Lighter peach color */
+        }
+
+        .download-btn {
+            background-color: #ffa726; /* Orange button */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            background-color: #fb8c00; /* Darker orange */
+        }
+
+        /* Hamburger icon */
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 30px;
+            color: #333;
+            padding: 10px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #ffcc80; /* Lighter peach background */
+            color: #333;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 20px;
+        }
+
+        /* Circular photo on the left side */
+        header .photo {
+            width: 150px;
+            height: 150px;
+            background-image: url('my.png'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-right: 30px; /* Space between the image and text */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            z-index: 1; /* Ensure the text stays above the image */
+            position: relative;
+        }
+
+        /* Card Style for Body Section */
+        .card {
+            width: 100%;
+            max-width: 1200px; /* Max width of the card */
+            margin: 40px auto; /* Center the card */
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Light shadow */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Main sections */
+        main {
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        section h2 {
+            color: #efa941; /* Lighter peach color */
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        /* Link button */
+        .link-button {
+            display: inline-block;
+            background-color: #ffcc80; /* Lighter peach color */
+            color: black;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            width: 100%; /* Make all buttons the same width */
+            box-sizing: border-box;
+            max-width: 250px; /* Optional: Limit max width */
+        }
+
+        .link-button:hover {
+            background-color: #ffb74d; /* Slightly darker peach */
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffe0b3; /* Light peach background */
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column; /* Stack photo and text vertically on smaller screens */
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            header .photo {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 20px; /* Add space below image on smaller screens */
+            }
+
+            nav ul {
+                flex-direction: column;
+                display: none; /* Initially hide the menu */
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul.active {
+                display: block; /* Display menu when active */
+            }
+
+            .menu-icon {
+                display: block; /* Show hamburger icon on smaller screens */
+            }
+
+            nav a {
+                padding: 10px;
+                font-size: 1.2rem;
+                display: block;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .card {
+                padding: 10px; /* Less padding on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Menu at the top -->
+        <nav>
+            <!-- Logo on the left side -->
+            <div class="logo"><a href="index.html"><h3>Jay's Portfolio</h3></a></div>
+
+            <!-- Hamburger Icon on the right side -->
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+            
+            <!-- Navigation Links -->
+            <ul id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="project.html">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <a href="Resume.pdf" class="download-btn" target="_blank">Download Brochure</a>
+
+        </nav>
+
+        <!-- Header with Photo and Typing Heading -->
+        <header>
+            <!-- Photo on the left side -->
+            <div class="photo"></div>
+            <h1 id="heading"></h1>
+        </header>
+
+        <!-- Card format for Body Section -->
+        <div class="card">
+            <main>
+                <section id="home">
+                    <h2>Welcome to My Portfolio</h2>
+                    <p>Explore my work and learn more about me!</p>
+                </section>
+
+                <section id="about">
+                    <h2>About Me</h2>
+                    <p>I am a passionate developer with a love for creating amazing websites!</p>
+                </section>
+
+                <section id="projects">
+                    <h2>My Projects</h2>
+                    <p>Here are some of the projects I've worked on:</p>
+                    <!-- Add project details or images here -->
+                </section>
+
+                <section id="contact">
+                    <h2>Contact Me</h2>
+                    <p>Feel free to reach out to me via email or social media!</p>
+                </section>
+
+                <!-- Link Buttons with uniform size -->
+                <a href="https://www.youtube.com/" class="link-button" target="_blank">Youtube</a>
+                <a href="https://www.facebook.com/" class="link-button" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/" class="link-button" target="_blank">Instagram</a>
+                <a href="https://www.linkedin.com/feed/" class="link-button" target="_blank">Linkedin</a>
+            </main>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Jay's Portfolio</p>
+        </footer>
+    </div>
+
+    <script>
+        // Typing effect for heading
+        const headingElement = document.getElementById('heading');
+        const textArray = ['I am Jay', 'I am Developer', 'I am Creative Thinker', 'I am Web Enthusiast'];
+        let textIndex = 0;
+        let charIndex = 0;
+
+        function typeText() {
+            if (charIndex < textArray[textIndex].length) {
+                headingElement.textContent += textArray[textIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeText, 150); // Adjust typing speed
+            } else {
+                setTimeout(deleteText, 1000); // Wait a second before deleting
+            }
+        }
+
+        function deleteText() {
+            if (charIndex > 0) {
+                headingElement.textContent = headingElement.textContent.slice(0, -1);
+                charIndex--;
+                setTimeout(deleteText, 100); // Adjust deleting speed
+            } else {
+                textIndex++;
+                if (textIndex === textArray.length) {
+                    textIndex = 0; // Restart from the beginning
+                }
+                setTimeout(typeText, 500); // Wait a bit before typing the next word
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            typeText();
+        });
+
+        // Toggle menu visibility on hamburger icon click
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
